@@ -3,11 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-    <title>FLOR AMARILLA <3</title>
-    
+    <title>Sistema de Seguridad</title>
     <style>
       * {
         padding: 0;
@@ -39,9 +35,8 @@
 
       .input-display {
         text-align: center;
-        margin: 0;
-        font-size: 30px;
         margin: 10px 0;
+        font-size: 30px;
       }
 
       .keypad {
@@ -54,20 +49,18 @@
         padding: 15px;
         font-size: 25px;
         background-color: #f8bbd0;
-        border: 1px black solid;
-        outline: none;
+        border: 1px solid black;
         cursor: pointer;
         transition: background 0.2s;
       }
 
-      .key:hover {
+      .keypad button:hover {
         background-color: #f48fb1;
       }
 
       .keypad button:last-child {
         grid-column: 2/3;
       }
-
     </style>
   </head>
   <body>
@@ -78,16 +71,16 @@
       </h2>
       <div class="input-display" id="inputDisplay">••••</div>
       <div class="keypad">
-        <button class="key" onclick="enterDigit('1')">1</button>
-        <button class="key" onclick="enterDigit('2')">2</button>
-        <button class="key" onclick="enterDigit('3')">3</button>
-        <button class="key" onclick="enterDigit('4')">4</button>
-        <button class="key" onclick="enterDigit('5')">5</button>
-        <button class="key" onclick="enterDigit('6')">6</button>
-        <button class="key" onclick="enterDigit('7')">7</button>
-        <button class="key" onclick="enterDigit('9')">9</button>
-        <button class="key" onclick="enterDigit('8')">8</button>
-        <button class="key" onclick="enterDigit('0')">0</button>
+        <button onclick="enterDigit('1')">1</button>
+        <button onclick="enterDigit('2')">2</button>
+        <button onclick="enterDigit('3')">3</button>
+        <button onclick="enterDigit('4')">4</button>
+        <button onclick="enterDigit('5')">5</button>
+        <button onclick="enterDigit('6')">6</button>
+        <button onclick="enterDigit('7')">7</button>
+        <button onclick="enterDigit('8')">8</button>
+        <button onclick="enterDigit('9')">9</button>
+        <button onclick="enterDigit('0')">0</button>
       </div>
     </div>
 
@@ -95,16 +88,18 @@
       const correctPassword = "0000";
       const display = document.getElementById("inputDisplay");
       let input = "";
+
       function enterDigit(digit) {
         if (input.length < 4) {
           input += digit;
         }
         display.textContent = input.padEnd(4, "•");
+
         if (input.length === 4) {
           if (input === correctPassword) {
-            window.location.href = "flower.html"; 
+            window.location.href = "flower.html"; // va al archivo de la flor
           } else {
-            alert("Contraseña incorecta, intenta de nuevo");
+            alert("Contraseña incorrecta, intenta de nuevo");
             input = "";
             display.textContent = "••••";
           }
